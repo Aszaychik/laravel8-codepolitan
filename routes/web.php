@@ -46,11 +46,15 @@ $taskList = [
     'fourth' => 'Research'
 ];
 
-Route::get('/task', function() use($taskList){
+Route::get('/tasks', function() use($taskList){
+    // ddd(request()->all());
+    if(request()->search){
+        return $taskList[request()->search];
+    };
     return $taskList;
 });
 
-Route::get('/task/{param}', function($param) use($taskList){
+Route::get('/tasks/{param}', function($param) use($taskList){
 
     return $taskList[$param];
 });
