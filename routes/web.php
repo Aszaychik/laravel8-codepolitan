@@ -30,3 +30,11 @@ Route::get("/hello", function(){
     // return $dataArray;
     return response()->json($dataArray, 200);
 });
+
+Route::get("/debug", function(){
+    $dataArray = [
+        'message' => 'Hello, world!',
+        'author' => 'aszaychik'
+    ];
+    ddd($dataArray);
+});
