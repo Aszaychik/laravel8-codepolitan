@@ -40,13 +40,16 @@ class TaskController extends Controller
             'user' => $request->user,
         ]);
 
-        return 'success';
+        return 'Insert Data Success';
     }
 
-    public function update(Request $request, $key)
+    public function update(Request $request, $id)
     {
-        $this->taskList[$key] = $request->task;
-        return $this->taskList;
+        $query = DB::table('tasks')->where('id', $id)->update([
+            'task' => $request->task,
+            'user' => $request->user
+        ]);
+        return "Update Data Success";
     }
 
     public function destroy($key)
