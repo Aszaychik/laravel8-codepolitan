@@ -45,23 +45,8 @@ Route::get('/tasks', [TaskController::class, 'index']);
 
 Route::get('/tasks/{param}',[TaskController::class, 'show']);
 
-// Route::post('/tasks', function() use($taskList){
-//     // return request()->all();
-//     $taskList[request()->label] = request()->task;
+Route::post('/tasks', [TaskController::class, 'store']);
 
-//     return $taskList;
-// });
+Route::patch('/tasks/{key}', [TaskController::class, 'update']);
 
-// Route::patch('/tasks/{key}', function($key) use($taskList){
-//     $taskList[$key] = request()->task;
-//     return $taskList;
-// });
-// Route::put('/tasks/{key}', function($key) use($taskList){
-//     $taskList[$key] = request()->task;
-//     return $taskList;
-// });
-
-// Route::delete('/tasks/{key}', function($key) use($taskList){
-//     unset($taskList[$key]);
-//     return $taskList;
-// });
+Route::delete('/tasks/{key}', [TaskController::class, 'destroy']);
