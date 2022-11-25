@@ -38,3 +38,19 @@ Route::get("/debug", function(){
     ];
     ddd($dataArray);
 });
+
+$taskList = [
+    "first" => "Coding",
+    'second' => 'Sleep',
+    'third' => 'Reading',
+    'fourth' => 'Research'
+];
+
+Route::get('/task', function() use($taskList){
+    return $taskList;
+});
+
+Route::get('/task/{param}', function($param) use($taskList){
+
+    return $taskList[$param];
+});
