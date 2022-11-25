@@ -7,30 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    private $taskList = [
-        "first" => "Coding",
-        'second' => 'Sleep',
-        'third' => 'Reading',
-        'fourth' => 'Research'
-    ];
 
     public function index(Request $request){
         // ddd(request()->all());
         if($request->search){
-            $showDB = DB::table('tasks')
+            $query = DB::table('tasks')
                 ->where('task', 'LIKE', "%$request->search%")
                 ->get();
-            return $showDB;
+            return $query;
         };
 
-        $showDB = DB::table('tasks')->get();
-        return $showDB;
+        $query = DB::table('tasks')->get();
+        return $query;
     }
 
     public function show($id)
     {
-        $data = DB::table('tasks')->where('id', $id)->first();
-        ddd($data);
+        $query = DB::table('tasks')->where('id', $id)->first();
+        ddd($query);
     }
 
     public function store(Request $request)
@@ -45,16 +39,17 @@ class TaskController extends Controller
 
     public function update(Request $request, $id)
     {
-        $query = DB::table('tasks')->where('id', $id)->update([
+        DB::table('tasks')->where('id', $id)->update([
             'task' => $request->task,
             'user' => $request->user
         ]);
         return "Update Data Success";
     }
 
-    public function destroy($key)
+    public function destroy($id)
     {
-        unset($this->taskList[$key]);
-        return $this->taskList;
+        DB::table('tasks')->where('id', $id)->delete();
+
+        return "Delete Data Success";
     }
 }
