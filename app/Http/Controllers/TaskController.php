@@ -64,6 +64,6 @@ class TaskController extends Controller
     {
         Task::find($id)->delete();
 
-        return "Delete Data Success";
+        return redirect('/tasks');
     }
 }

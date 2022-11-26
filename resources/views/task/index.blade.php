@@ -14,10 +14,12 @@
                 <small>{{ $item->created_at}}</small>
             </div>
             <div class="col-10 mb-1 small">{{ $item->user }}</div>
-            <div class="group-action">
+            <form action="{{ url("/tasks/$item->id")}}" method='POST' class="group-action">
+                @csrf
+                @method('DELETE')
                 <a href="{{ url("/tasks/$item->id/edit") }}" class="badge bg-info text-white">edit</a>
-                <a href="#" class="badge bg-danger text-white">delete</a>
-            </div>
+                <button type="submit" class="badge bg-danger btn text-white">delete</button>
+            </form>
         </div>
     </div>
     @endforeach
