@@ -17,8 +17,10 @@ class TaskController extends Controller
             return $query;
         };
 
-        $query = Task::all();
-        return $query;
+        $data = Task::all();
+        return view('task.index', [
+            'data' => $data
+        ]);
     }
 
     public function show($id)
