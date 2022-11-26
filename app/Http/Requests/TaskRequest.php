@@ -28,4 +28,11 @@ class TaskRequest extends FormRequest
             'user' => ['required']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'The :ATTRIBUTE field is REQUIRED!',
+        ];
+    }
 }
