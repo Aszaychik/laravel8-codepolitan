@@ -42,7 +42,7 @@ class TaskController extends Controller
             'user' => $request->user,
         ]);
 
-        return 'Insert Data Success';
+        return redirect('/tasks');
     }
 
     public function edit($id){
