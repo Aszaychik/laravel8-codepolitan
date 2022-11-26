@@ -27,8 +27,8 @@ class TaskController extends Controller
 
     public function show($id)
     {
-        $query = Task::find($id);
-        return $query;
+        $data = Task::find($id);
+        return $data;
     }
 
     public function create(){
@@ -46,7 +46,9 @@ class TaskController extends Controller
     }
 
     public function edit($id){
-        return view('task.edit');
+        $data = Task::find($id);
+
+        return view('task.edit', compact('data'));
     }
 
     public function update(Request $request, $id)
@@ -55,7 +57,7 @@ class TaskController extends Controller
             'task' => $request->task,
             'user' => $request->user
         ]);
-        return "Update Data Success";
+        return redirect('/tasks');
     }
 
     public function destroy($id)
