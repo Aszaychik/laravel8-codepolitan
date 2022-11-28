@@ -41,13 +41,14 @@ Route::get("/debug", function(){
 
 
 Route::prefix('/tasks')
+    ->controller(TaskController::class)
     ->middleware('auth')->group(function () {
-    Route::get('/', [TaskController::class, 'index']);
-    Route::post('/', [TaskController::class, 'store']);
-    Route::get('/create', [TaskController::class, 'create']);
-    Route::get('/{id}',[TaskController::class, 'show']);
-    Route::get('{id}/edit/', [TaskController::class, 'edit']);
-    Route::patch('/{id}', [TaskController::class, 'update']);
-    Route::delete('/{id}', [TaskController::class, 'destroy']);
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/create', 'create');
+    Route::get('/{id}','show');
+    Route::get('{id}/edit/', 'edit');
+    Route::patch('/{id}', 'update');
+    Route::delete('/{id}', 'destroy');
 });
 
