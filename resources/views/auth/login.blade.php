@@ -21,6 +21,9 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
+                <a href="{{ route('password.request') }}" class="">
+                    Forgot Password?
+                </a>
             </form>
         </div>
     </div>
