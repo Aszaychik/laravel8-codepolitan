@@ -41,7 +41,7 @@ Route::get("/debug", function(){
 
 
 Route::prefix('/tasks')
-    ->middleware('isAdmin')->group(function () {
+    ->middleware('auth')->group(function () {
     Route::get('/', [TaskController::class, 'index']);
     Route::post('/', [TaskController::class, 'store']);
     Route::get('/create', [TaskController::class, 'create']);
